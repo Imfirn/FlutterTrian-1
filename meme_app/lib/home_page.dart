@@ -1,9 +1,9 @@
-import 'dart:ui';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:meme_app/auth_page.dart';
 class Homepge extends StatelessWidget {
-  const Homepge({ Key? key }) : super(key: key);
+  final auth =FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,10 @@ class Homepge extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Text("Home",style: TextStyle(fontSize: 20),
           ),
-          ElevatedButton(onPressed: (){}, child: Text("Sign Out",style: TextStyle(fontSize: 20)))
+          ElevatedButton(onPressed: (){
+              auth.signOut();
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>AuthPage()));
+          }, child: Text("Sign Out",style: TextStyle(fontSize: 20)))
           ],
         ),
       ),
