@@ -9,6 +9,7 @@ class SelectMeme extends StatefulWidget {
 }
 
 class _SelectMemeState extends State<SelectMeme> {
+  int maxItem=20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,7 @@ class _SelectMemeState extends State<SelectMeme> {
             spacing: 2,
             runSpacing: 2,
             children: [
-              for(var i =0;i<20;i++)
+              for(var i =0;i<maxItem;i++)
                 RawMaterialButton(
                   onPressed: (){
                     print(memeName[i]);
@@ -41,7 +42,20 @@ class _SelectMemeState extends State<SelectMeme> {
                   ),
                 )
             ],
-          )],
+          ),
+          maxItem<memeName.length
+          ?TextButton(onPressed: (){
+            setState(() {
+              if(maxItem+20<memeName.length){
+                maxItem+=20;
+
+              }else{
+                maxItem=memeName.length;
+              }
+            });
+          }, child: Text('load more'),
+          ):Container()
+          ],
         ),
         ),
     );
