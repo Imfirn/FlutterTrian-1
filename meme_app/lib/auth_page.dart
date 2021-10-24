@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:meme_app/home_page.dart';
+import 'package:meme_app/selectmeme.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({ Key? key }) : super(key: key);
@@ -56,7 +57,7 @@ class _AuthPageState extends State<AuthPage> {
         ElevatedButton.icon(
          onPressed:()async{
           try{await auth.signInWithEmailAndPassword(email: _email, password: _password);
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Homepge()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>SelectMeme()));
             print("Login");
           } on FirebaseAuthException catch(e){
             print(e.message);
