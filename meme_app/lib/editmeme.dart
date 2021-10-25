@@ -11,7 +11,7 @@ import 'package:share/share.dart';
 class EditMeme extends StatefulWidget {
   final String imageName;
   const EditMeme({Key? key, required this.imageName}) : super(key: key);
-
+  
   @override
   _EditMemeState createState() => _EditMemeState();
 }
@@ -19,6 +19,7 @@ class EditMeme extends StatefulWidget {
 class _EditMemeState extends State<EditMeme> {
   String topText ='',bottmText ='';
   GlobalKey globalKey = new GlobalKey();
+  double xTop=60,yTop=30,xBtm=60,yBtm=200;
    @override
   void initState(){
     super.initState();
@@ -52,16 +53,53 @@ class _EditMemeState extends State<EditMeme> {
           key:globalKey,
           child:Stack(
             children: [
-              Image.asset('assets/meme/${widget.imageName}.jpg'),
+              DragTarget(builder: (
+              BuildContext context,
+              List<dynamic> accepted,
+              List<dynamic> rejected,
+          ){
+            return Image.asset('assets/meme/${widget.imageName}.jpg');
+          },
+          onAcceptWithDetails:(DragTargetDetails<String>details) 
+          {
+              print(details.data);
+              print(details.offset);
+              var newX=details.offset.dx-MediaQuery.of(context).padding.left;
+              var newY=details.offset.dy-MediaQuery.of(context).padding.top-AppBar().preferredSize.height;
+              setState(() {
+                if(details.data=='top')
+                {
+                  xTop=newX;
+                  yTop=newY;
+                }else if(details.data=='bottom'){
+                  xBtm=newX;
+                  yBtm=newY;
+                }
+              });
+          }
+          ,
+           )
+              ,              
               Positioned(
-                top: 30,
-                left: 60,
-                child: buildStrokeText(topText),
+                top: yTop,
+                left: xTop,
+                child: 
+                Draggable<String>(
+                  data: 'top',
+                  child: buildStrokeText(topText),
+                  feedback: buildStrokeText(topText),
+                  childWhenDragging: Container(),
+                ),
               ),
               Positioned(
-                top: 230,
-                left: 60,
-                child: buildStrokeText(bottmText),
+                top: yBtm,
+                left: xBtm,
+                child: Draggable<String>(
+                  data: 'bottom',
+                  child: buildStrokeText(bottmText),
+                  feedback: buildStrokeText(bottmText),
+                  childWhenDragging: Container(),
+                ),
               ),
             ],
           ),
