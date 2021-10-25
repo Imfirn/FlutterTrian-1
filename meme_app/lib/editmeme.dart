@@ -20,6 +20,7 @@ class _EditMemeState extends State<EditMeme> {
   String topText ='',bottmText ='';
   GlobalKey globalKey = new GlobalKey();
   double xTop=60,yTop=30,xBtm=60,yBtm=200;
+  double size=52;
    @override
   void initState(){
     super.initState();
@@ -86,8 +87,8 @@ class _EditMemeState extends State<EditMeme> {
                 child: 
                 Draggable<String>(
                   data: 'top',
-                  child: buildStrokeText(topText),
-                  feedback: buildStrokeText(topText),
+                  child: buildStrokeText(topText,size),
+                  feedback: buildStrokeText(topText,size),
                   childWhenDragging: Container(),
                 ),
               ),
@@ -96,8 +97,8 @@ class _EditMemeState extends State<EditMeme> {
                 left: xBtm,
                 child: Draggable<String>(
                   data: 'bottom',
-                  child: buildStrokeText(bottmText),
-                  feedback: buildStrokeText(bottmText),
+                  child: buildStrokeText(bottmText,size),
+                  feedback: buildStrokeText(bottmText,size),
                   childWhenDragging: Container(),
                 ),
               ),
@@ -147,6 +148,33 @@ class _EditMemeState extends State<EditMeme> {
                 ),
                 SizedBox(height: 24),
                 Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextButton(child: Text('+',style: TextStyle(color: Colors.black,fontSize: 25)),
+                      onPressed: (){
+                        print('Expand');
+                        setState(() {
+                          
+                          print(size);
+                          if(size <= 110){size+=1.0; }
+                          
+                        });
+                      },style: ButtonStyle(backgroundColor:  MaterialStateProperty.all(Colors.amber)),),
+                      TextButton(child: Text('-',style: TextStyle(color: Colors.black,fontSize: 25)),
+                      onPressed: (){
+                        print('Reduce');
+                        setState(() {
+                          
+                          print(size);
+                          if(size>=10){size-=1.0; }
+                        });
+                      },style: ButtonStyle(backgroundColor:  MaterialStateProperty.all(Colors.amber)),)
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 20),
                   child: TextButton(
                     child: Text('Export',style: TextStyle(color: Colors.black),),
                     onPressed: (){
@@ -154,7 +182,7 @@ class _EditMemeState extends State<EditMeme> {
                       exportMeme();
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.amber)
+                      backgroundColor: MaterialStateProperty.all(Colors.black45)
                     ),
                 ),
                 ),
@@ -166,12 +194,12 @@ class _EditMemeState extends State<EditMeme> {
     );
   }
 
-  Stack buildStrokeText(String text) {
+  Stack buildStrokeText(String text,double size) {
     return Stack(
       children: [
         Text(text,
             style: TextStyle(
-              fontSize: 52,
+              fontSize: size,
               fontWeight: FontWeight.bold,
               foreground: Paint()
                 ..style = PaintingStyle.stroke
@@ -180,7 +208,7 @@ class _EditMemeState extends State<EditMeme> {
             )),
         Text(text,
             style: TextStyle(
-                fontSize: 52,
+                fontSize: size,
                 fontWeight: FontWeight.bold,
                 color: Colors.white)),
       ],
