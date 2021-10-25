@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:meme_app/first_page.dart';
 import 'package:meme_app/selectmeme.dart';
 import 'auth_page.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: AuthPage(),
+      home: Firstpage(),
     );
   }
 }
