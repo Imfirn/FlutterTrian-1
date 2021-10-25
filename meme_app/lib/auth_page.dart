@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:meme_app/home_page.dart';
 import 'package:meme_app/selectmeme.dart';
 
 class AuthPage extends StatefulWidget {
@@ -17,7 +16,7 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title:Text("Registter/Login"),
+      appBar:AppBar(title:Text("Register/Login"),
       ) ,
       body: Column(
         mainAxisAlignment:MainAxisAlignment.center,
@@ -45,7 +44,7 @@ class _AuthPageState extends State<AuthPage> {
         onPressed:()async{
           try{await auth.createUserWithEmailAndPassword(email: _email, password: _password);
           print("Sign-in");
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Homepge()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>SelectMeme()));
           } on FirebaseAuthException catch(e){
             print(e.message);
           }
