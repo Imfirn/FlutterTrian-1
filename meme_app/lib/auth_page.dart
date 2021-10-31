@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,24 +16,9 @@ class _AuthPageState extends State<AuthPage> {
   final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          gradient: RadialGradient(
-        center: Alignment.topLeft, // near the top right
-        radius: 2,
-        // ignore: prefer_const_literals_to_create_immutables
-        colors: <Color>[
-          Color(0xFFEA93A1),
-          Color(0xFFF596E5),
-          Color(0xFF8B8DD1),
-          Color(0xFF965EB8),
-        ],
-      )),
-      child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            title: Text("Register/Login"),
-          ),
+    return  Scaffold(
+          // backgroundColor: Colors.transparent,
+          
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -99,7 +83,7 @@ class _AuthPageState extends State<AuthPage> {
                     style: TextStyle(fontSize: 20),
                   ))
             ],
-          )),
+          )
     );
   }
 }

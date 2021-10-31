@@ -58,8 +58,8 @@ class _FirstpageState extends State<Firstpage> {
                         Container(
                         padding: EdgeInsets.only(left: 100,top:100),
                         child:     
-                          Image.asset('auth_assets/women.png',width: 400,height: 500,)
-                        //  AnimateImage(),  
+                          // Image.asset('auth_assets/women.png',width: 400,height: 500,)
+                         AnimateImage(),  
                       ),                      
                         Container(   
                         padding: EdgeInsets.only(left: 300,top:115),                  
@@ -125,8 +125,8 @@ class _AnimateImageState extends State<AnimateImage>
 
   @override
   void dispose() {
+    if(_controller != null) _controller.dispose();
     super.dispose();
-    _controller.dispose();
   }
 
   @override
