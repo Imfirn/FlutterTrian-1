@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:meme_app/editmeme.dart';
 import 'meme_data.dart';
@@ -15,11 +17,34 @@ class _SelectMemeState extends State<SelectMeme> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-      elevation: 0,
-      backgroundColor: Colors.white,
-      title: Text('Select Meme',style: TextStyle(color: Colors.black),
-      ),
-      ),
+        title: Text('Select meme',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 22)),
+        centerTitle: true,         
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(35),bottomRight: Radius.circular(35))
+        ),flexibleSpace: ClipRRect(
+           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(35),bottomRight: Radius.circular(35)),
+          child: Container(
+            
+          decoration: BoxDecoration(
+            
+            gradient: RadialGradient(
+              center: Alignment.topLeft,
+              radius: 6,
+              // ignore: prefer_const_literals_to_create_immutables
+              colors: [ 
+              Color(0xFFEA93A1),
+              Color(0xFFF596E5),
+              Color(0xFF8B8DD1),
+              Color(0xFF965EB8),],
+              
+            )
+
+          ),
+
+        ),
+        ),
+        
+        
+        ),
       body: SafeArea(
         child: ListView(
           children: [Wrap(
@@ -53,7 +78,7 @@ class _SelectMemeState extends State<SelectMeme> {
                 maxItem=memeName.length;
               }
             });
-          }, child: Text('load more'),
+          }, child: Text('load more',style: TextStyle(color:Color(0xFF965EB8),decoration: TextDecoration.underline),),
           ):Container()
           ],
         ),

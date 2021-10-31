@@ -17,9 +17,9 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-          // backgroundColor: Colors.transparent,
+        
         appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,      
+        // backgroundColor: Colors.pinkAccent,      
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(250),bottomRight: Radius.circular(250))
         ),
