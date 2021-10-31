@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meme_app/first_page.dart';
 import 'package:meme_app/selectmeme.dart';
 import 'auth_page.dart';
+import 'test.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
