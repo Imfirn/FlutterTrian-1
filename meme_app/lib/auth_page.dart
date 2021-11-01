@@ -68,7 +68,7 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0, right: 80.0),
-                      child: Text('please login or sign in',
+                      child: Text('please login or sign up',
                           style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.w300,
