@@ -88,11 +88,19 @@ class _AuthPageState extends State<AuthPage> {
                   padding: EdgeInsets.symmetric(horizontal: 35),
                 
                   child: TextField(
-                    decoration: InputDecoration(
-                        fillColor: Colors.white,
+                    decoration: InputDecoration( 
+                    labelText: "Email",
+                    hintText: 'Insert your email here',
+                    fillColor: Color(0xFFE3E3E3),
                         filled: true,
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: "Email", hintText: "Insert your email here"),
+                       enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                          ,borderSide: BorderSide(color:Colors.transparent),                          
+                          ),
+                    focusedBorder: OutlineInputBorder(
+                       borderRadius: BorderRadius.circular(20)
+                          ,borderSide: BorderSide(color:Colors.grey),
+                    )),
                     onChanged: (value) {
                       setState(() {
                         _email = value.trim();
@@ -106,11 +114,18 @@ class _AuthPageState extends State<AuthPage> {
                   child: TextField(
                     obscureText: true,
                     decoration: InputDecoration(
-                        fillColor: Colors.white,
+                         labelText: "Password",
+                    hintText: 'Insert your password here',
+                    fillColor: Color(0xFFE3E3E3),
                         filled: true,
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: "Password",
-                        hintText: "Insert your Password here"),
+                       enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                          ,borderSide: BorderSide(color:Colors.transparent),                          
+                          ),
+                    focusedBorder: OutlineInputBorder(
+                       borderRadius: BorderRadius.circular(20)
+                          ,borderSide: BorderSide(color:Colors.grey),
+                    )),
                     onChanged: (value) {
                       setState(() {
                         _password = value.trim();
@@ -131,16 +146,16 @@ class _AuthPageState extends State<AuthPage> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFF596E5),
+                      primary: Color(0xFF594F4F),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       
                     ),
                     icon: Icon(Icons.login),
                     label: Text(
                       "Login",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16,fontWeight: FontWeight.w300),
                       
                     )),
                 ElevatedButton.icon(
@@ -155,16 +170,16 @@ class _AuthPageState extends State<AuthPage> {
                         print(e.message);
                       }
                     },style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF8B8DD1),
+                      primary: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)
                       ),
                       
                     ),
-                    icon: Icon(Icons.add),
+                    icon: Icon(Icons.add,color: Color(0xFF594F4F),),
                     label: Text(
                       "Register",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16,fontWeight: FontWeight.w300,color:Color(0xFF594F4F)),
                     )),
                 
               ],

@@ -30,22 +30,41 @@ class _EditMemeState extends State<EditMeme> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+     
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
+        
         leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
         ),
         title: Text(
-          'Add TexT',
-          style: TextStyle(color: Colors.black),
+          'Add Text',
+          style: TextStyle(color: Colors.white,fontSize: 24,fontWeight:FontWeight.w400),
+        ), centerTitle: true,
+         shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(35),bottomRight: Radius.circular(35))
+        ),flexibleSpace: ClipRRect(
+           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(35),bottomRight: Radius.circular(35)),
+          child: Container(
+            
+          decoration: BoxDecoration(
+            
+            gradient: RadialGradient(
+              center: Alignment.topLeft,
+              radius: 6,
+              // ignore: prefer_const_literals_to_create_immutables
+              colors: [ 
+              Color(0xFFEA93A1),
+              Color(0xFFF596E5),
+              Color(0xFF8B8DD1),
+              Color(0xFF965EB8),],
+              
+            )
+
+          ),
+
+        ),
         ),
       ),
       body: ListView(        
@@ -109,23 +128,27 @@ class _EditMemeState extends State<EditMeme> {
             padding: EdgeInsets.symmetric(horizontal: 35),
             child: Column(
               children: [
-                SizedBox(height: 24),
+                SizedBox(height: 40),
                 TextFormField(
                   onChanged: (text){
                     setState(() {
                       topText=text;
                     });
                   },decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color:Colors.transparent),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepOrange),
-                    ),
-                    filled: true,
-                    fillColor: Colors.amberAccent,
                     hintText: 'Top text',
-                  ),
+                    fillColor: Color(0xFFE3E3E3),
+                        filled: true,
+                       enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                          ,borderSide: BorderSide(color:Colors.transparent),                          
+                          ),
+                    focusedBorder: OutlineInputBorder(
+                       borderRadius: BorderRadius.circular(20)
+                          ,borderSide: BorderSide(color:Colors.grey),
+                    )
+                          
+                          
+                          )
                 ),
                 SizedBox(height: 24),
                 TextFormField(
@@ -135,15 +158,18 @@ class _EditMemeState extends State<EditMeme> {
                     });
                   },
                   decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color:Colors.transparent),
-                    ),
+                     hintText: 'Bottom text',
+                    fillColor: Color(0xFFE3E3E3),
+                        filled: true,
+                       enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                          ,borderSide: BorderSide(color:Colors.transparent),                          
+                          ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.deepOrange),
-                    ),
-                    filled: true,
-                    fillColor: Colors.amberAccent,
-                    hintText: 'Bottom text',
+                       borderRadius: BorderRadius.circular(20)
+                          ,borderSide: BorderSide(color:Colors.grey),
+                    )
+                        
                   ),
                 ),
                 SizedBox(height: 24),
@@ -151,7 +177,7 @@ class _EditMemeState extends State<EditMeme> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      TextButton(child: Text('+',style: TextStyle(color: Colors.black,fontSize: 25)),
+                      TextButton(child: Text('+',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w400)),
                       onPressed: (){
                         print('Expand');
                         setState(() {
@@ -160,8 +186,8 @@ class _EditMemeState extends State<EditMeme> {
                           if(size <= 110){size+=1.0; }
                           
                         });
-                      },style: ButtonStyle(backgroundColor:  MaterialStateProperty.all(Colors.amber)),),
-                      TextButton(child: Text('-',style: TextStyle(color: Colors.black,fontSize: 25)),
+                      },style: ButtonStyle(backgroundColor:  MaterialStateProperty.all(Color(0xFF594F4F))),),
+                      TextButton(child: Text('-',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w400)),
                       onPressed: (){
                         print('Reduce');
                         setState(() {
@@ -169,20 +195,20 @@ class _EditMemeState extends State<EditMeme> {
                           print(size);
                           if(size>=10){size-=1.0; }
                         });
-                      },style: ButtonStyle(backgroundColor:  MaterialStateProperty.all(Colors.amber)),)
+                      },style: ButtonStyle(backgroundColor:  MaterialStateProperty.all(Color(0xFF594F4F))),)
                     ],
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 20),
+                  padding: EdgeInsets.symmetric(vertical: 15),
                   child: TextButton(
-                    child: Text('Export',style: TextStyle(color: Colors.black),),
+                    child: Text('Export',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w400),),
                     onPressed: (){
                       print('Export');
                       exportMeme();
                     },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black45)
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color(0xFFFCB7C2),shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))
                     ),
                 ),
                 ),

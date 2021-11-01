@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:meme_app/auth_page.dart';
 import 'package:meme_app/editmeme.dart';
 import 'meme_data.dart';
 class SelectMeme extends StatefulWidget {
@@ -14,9 +16,18 @@ class _SelectMemeState extends State<SelectMeme> {
   int maxItem=20;
   @override
   Widget build(BuildContext context) {
+    final auth = FirebaseAuth.instance;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        actions:[ IconButton(
+          icon: Icon(Icons.exit_to_app_rounded, color: Colors.white),
+          onPressed: () {
+             auth.signOut();
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => AuthPage()));
+          },
+        )],
         title: Text('Select meme',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 22)),
         centerTitle: true,         
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(35),bottomRight: Radius.circular(35))
