@@ -98,7 +98,7 @@ class _AuthPageState extends State<AuthPage> {
                   decoration: InputDecoration(
                       labelText: "Email",
                       hintText: 'Insert your email here',
-                      fillColor: Color(0xFFE3E3E3),
+                      fillColor: Color(0xFFD7D7D7),
                       filled: true,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -122,7 +122,7 @@ class _AuthPageState extends State<AuthPage> {
                   decoration: InputDecoration(
                       labelText: "Password",
                       hintText: 'Insert your password here',
-                      fillColor: Color(0xFFE3E3E3),
+                      fillColor: Color(0xFFD7D7D7),
                       filled: true,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),

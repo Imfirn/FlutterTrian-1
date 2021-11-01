@@ -137,7 +137,7 @@ class _EditMemeState extends State<EditMeme> {
                     },
                     decoration: InputDecoration(
                         hintText: 'Top text',
-                        fillColor: Color(0xFFE3E3E3),
+                        fillColor: Color(0xFFD7D7D7),
                         filled: true,
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -156,7 +156,7 @@ class _EditMemeState extends State<EditMeme> {
                   },
                   decoration: InputDecoration(
                       hintText: 'Bottom text',
-                      fillColor: Color(0xFFE3E3E3),
+                      fillColor: Color(0xFFD7D7D7),
                       filled: true,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
